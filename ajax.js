@@ -14,4 +14,4 @@ function ajax(url,fnResult,fnFailure){
 			fnFailure("数据读取失败");
 		}
 	}
-}
+};
