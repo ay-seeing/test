@@ -1,1 +1,6 @@
-asdasda
+打开git进入到相应的仓库
+1、先执行git pull 更新本地仓库
+2、修改相应的文件后，git add name 或 git add . 跟踪文件
+3、查看跟踪的文件, git status
+4、提交到本地, git commit -m "相关信息"
+5、推到远程仓库 git push
