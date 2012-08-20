@@ -3,4 +3,4 @@
 2、修改相应的文件后，git add name 或 git add . 跟踪文件
 3、查看跟踪的文件, git status
 4、提交到本地, git commit -m "相关信息"
-5、推到远程仓库 git push
+5、推到远程仓库 git push  ，第一次推送用 git push -u origin master
