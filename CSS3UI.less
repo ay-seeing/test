@@ -1,0 +1,106 @@
+// css3UI
+
+/*变量*/
+@black:black;
+@white:white;
+@current:red;
+
+/* reset样式 */
+*{margin:0;padding:0;}
+body{font:12px/normal "Microsoft YaHei",SimSun;color:#555;}
+ul,ol{list-style:none;}
+a{text-decoration:none;}
+
+/* base样式 */
+.css3ui{width:801px;padding:10px;border:3px solid #f0f0f0;background:#fefefe;margin:10px auto;
+font-size:0;letter-spacing:0;/*去除空隙*/
+}
+.css3ui li{font-size:0;letter-spacing:0;width:200px;display:inline-block;height:16px;line-height:16px;margin:8px 0;position:relative;}
+.css3ui a{display:block;font-size:14px;line-height:16px;padding-left:20px;position:relative;}
+.css3ui a:focus,.css3ui a:hover{color:@current;}
+.css3ui li::before,.css3ui li::after,.css3ui a::before,.css3ui a::after{content:" ";position:absolute;left:0;top:50%;}
+.css3ui li:hover::before,.css3ui li:focus::before,.css3ui li:hover::after,.css3ui li:focus::after,.css3ui a:hover::before,.css3ui a:focus::before,.css3ui a:hover::after,.css3ui a:focus::after{border-color:@current;background:@current;}
+
+
+// 搜索 search
+.search a::before{width:6px;height:6px;border:3px solid @black;border-radius:9px;margin-top:-8px;}.search a:hover::before,.search a:focus::before{background:transparent;}
+.search a::after{width:6px;height:3px;background:@black;margin-top:2px;margin-left:8px;
+	-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);
+}
+
+// 评论 comment
+.comment a::before{width:16px;height:12px;border-radius:2px;background:@black;margin-top:-8px;}
+.comment a::after{width:0px;height:0px;border:4px solid transparent;border-left-color:@black;margin-top:-1px;left:8px;}
+.comment a:hover::after,.comment a:focus::after{border-color:transparent;border-left-color:@current;background:transparent;}
+
+// 喜欢 love
+.love a::before{width:14px;height:8px;border-top-left-radius:4px;border-bottom-left-radius:4px;background:@black;margin-top:-4px;
+	-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);
+}
+.love a::after{width:14px;height:8px;border-top-right-radius:4px;border-bottom-right-radius:4px;background:@black;margin-top:-4px;margin-left:4px;
+	-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg);
+}
+
+// 添加 add
+.add::before{width:16px;height:16px;border-radius:8px;background:@black;margin-top:-7px;}
+.add a::before{width:10px;height:2px;background:@white;margin-left:3px;}
+.add a::after{width:2px;height:10px;background:@white;margin:-4px 0 0 7px;}
+.add a:hover::before,.add a:focus::before,.add a:hover::after,.add a:focus::after{background:@white;}
+
+// 删除 remove
+.remove a::before{width:16px;height:16px;border-radius:8px;background:@black;margin-top:-7px;}
+.remove a::after{width:10px;height:2px;background:@white;margin-left:3px;}
+.remove a:hover::after,.remove a:focus::after{background:@white;}
+
+// 删除 delete
+.delete::before{width:16px;height:16px;border-radius:8px;background:@black;margin-top:-7px;}
+.delete a::before{width:10px;height:2px;background:@white;margin-left:3px;
+	-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);
+}
+.delete a::after{width:2px;height:10px;background:@white;margin:-4px 0 0 7px;
+	-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);
+}
+.delete a:hover::before,.delete a:focus::before,.delete a:hover::after,.delete a:focus::after{background:@white;}
+ 
+//添加 add-alt
+.add_alt a::before{width:14px;height:4px;background:@black;margin-left:1px;}
+.add_alt a::after{width:4px;height:14px;background:@black;margin:-5px 0 0 6px;}
+
+// 删除 remove-alt
+.remove_alt a::before{width:14px;height:4px;background:@black;margin-left:1px;}
+
+// 删除 delete-alt
+.delete_alt a::before{width:14px;height:4px;background:@black;margin-left:1px;
+	-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);
+}
+.delete_alt a::after{width:4px;height:14px;background:@black;margin:-5px 0 0 6px;
+	-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);
+}
+
+// 旗帜 report
+.report a::before{width:8px;height:8px;border-left:2px solid @black;border-top:7px solid @black;margin-top:-6px;}
+.report a::after{width:6px;height:6px;background:@black;margin:-3px 0 0 6px;}
+.report a:hover::before,.report a:focus::before{background:none;}
+
+// 垃圾桶 trash
+.trash::before{width:9px;height:11px;border:2px solid @black;margin-top:-5px;margin-left:2px;}
+.trash::after{width:3px;height:1px;border:2px solid @black;margin:-8px 0 0 5px;}
+.trash a::before{height:8px;width:1px;background:@black;margin:-1px 0 0 5px;}
+.trash a::after{height:6px;width:1px;border-left:1px solid @black;border-right:1px solid @black;margin:1px 0 0 8px;}
+li.trash:hover::before,li.trash:focus::after,li.trash:hover::after,li.trash:focus::before,.trash a:hover::after,.trash a:focus::after{background:none;}
+
+// 锁 lock
+.lock::before{width:13px;height:10px;background:@black;margin-top:-2px;margin-left:2px;}
+.lock::after{width:5px;height:5px;border-radius:5px 5px 0 0;border:2px solid @black;border-bottom:0;margin:-7px 0 0 4px;}
+.lock a::before{height:3px;width:3px;background:@white;margin:0px 0 0 7px;}
+.lock a::after{height:2px;width:1px;background:@white;margin:3px 0 0 8px;}
+li.lock:hover::after,li.lock:focus::before{background:none;}
+.lock a:hover::after,.lock a:focus::after,.lock a:hover::before,.lock a:focus::before{background:@white;}
+
+// 锁Open unLock
+.unLock::before{width:13px;height:10px;background:@black;margin-top:-2px;}
+.unLock::after{width:5px;height:5px;border-radius:5px 5px 0 0;border:2px solid @black;border-bottom:0;margin:-7px 0 0 8px;}
+.unLock a::before{height:3px;width:3px;background:@white;margin:0px 0 0 5px;}
+.unLock a::after{height:2px;width:1px;background:@white;margin:3px 0 0 6px;}
+li.unLock:hover::after,li.unLock:focus::before{background:none;}
+.unLock a:hover::after,.unLock a:focus::after,.unLock a:hover::before,.unLock a:focus::before{background:@white;}
