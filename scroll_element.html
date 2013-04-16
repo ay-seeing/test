@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动</title>
+	<style>
+*{margin:0;padding:0;}
+body{font:14px/2em Arial;color:#666;-moz-user-select:none;height:2000px;}
+.list_box{width:200px;height:300px;overflow:hidden;position:relative;margin:10px auto;border:2px solid #ccc;}
+.list{list-style-type:decimal-leading-zero;list-style-position:inside;position:absolute;width:100%;}
+.list li{height:29px;line-height:29px;border-bottom:1px dashed #ccc;}
+.scroll_bar{position:absolute;width:12px;top:0;bottom:0;right:0;background:rgba(0,0,0,0.3);}
+.scroll_btn{position:absolute;width:100%;top:0;left:0;background:rgba(0,0,0,0.3);}
+	</style>
+<script>
+listener={
+	addHandler:function(obj,events,fun){
+		obj.addEventListener ? obj.addEventListener(events,fun,false) : obj.attachEvent("on"+events,fun);
+	},
+	removeHandler:function(obj,events,fun){
+		obj.removeEventListener ? obj.removeEventListener(events,fun,false) : obj.detachEvent("on"+events,fun);
+	}
+}
+
+
+function listScroll(list,item){
+	document.onselectstart=function(){
+		return false;
+	}
+	document.body.style="-moz-user-select:none;";
+	var oList = document.getElementById(list);
+	var aList = oList.getElementsByTagName(item);
+	if(oList.offsetHeight > oList.parentNode.offsetHeight){
+		var oScrollBar = document.createElement("div");
+		var oScrollBtn = document.createElement("div");
+		oScrollBar.className = "scroll_bar";
+		oScrollBtn.className = "scroll_btn";
+		oScrollBar.appendChild(oScrollBtn);
+		oList.parentNode.appendChild(oScrollBar);
+	}else{
+		return false;
+	}
+	oScrollBtn.style.height = oScrollBar.offsetHeight/(oList.offsetHeight/oList.parentNode.offsetHeight) + "px";
+	var oy,oT;
+	oScrollBtn.onmousedown = function(ev){
+		var oEvent = ev || event;
+		oy = oEvent.clientY;
+		oT = this.offsetTop;
+		listener.addHandler(document,"mousemove",fnmove);
+	}
+	listener.addHandler(document,"mouseup",fnScroll_DocumentUp);
+	function fnScroll_DocumentUp(){
+		listener.removeHandler(document,"mousemove",fnmove);
+	}
+	function fnmove(ev){
+		var oEvent = ev || event;
+		var nt = oEvent.clientY - oy + oT;
+		if(nt < 0){
+			nt=0;
+		}else if(nt > oScrollBar.offsetHeight - oScrollBtn.offsetHeight){
+			nt = oScrollBar.offsetHeight - oScrollBtn.offsetHeight;
+		}
+		oScrollBtn.style.top = nt + "px";
+		oList.style.top=-nt/oScrollBar.offsetHeight*oList.offsetHeight+"px";
+	}
+
+	/*oList.onmouseover = function(){
+		document.onmousewheel = scrollFunc;
+		document.addEventListener('DOMMouseScroll',scrollFunc,false); // for firefox 
+	}
+	oList.onmouseout = function(){
+		document.onmousewheel = null;
+		document.removeEventListener('DOMMouseScroll',scrollFunc,false); // for firefox 
+	}
+	var scrollFunc=function(e){
+	    e=e||window.event;
+	   if (e&&e.preventDefault){ 
+	        e.preventDefault();
+	        e.stopPropagation();
+	    }else{ 
+	     e.returnvalue=false;  
+	     return false;     
+	    }
+	}*/
+
+
+	oList.addEventListener('DOMMouseScroll',fnMouseScroll,false); /* for firefox */
+	oList.onmousewheel  = fnMouseScroll;
+	function fnMouseScroll(ev){
+		var oEvent=ev || event;
+		if(oEvent.wheelDelta){
+			var aa=oEvent.wheelDelta/120;
+		}else{
+			var aa=-oEvent.detail/3;  /* for firefox*/
+		}
+		aa*=50;
+		var ot=oList.offsetTop+aa;
+		if(ot > 0){
+			ot = 0;
+		}else if(ot < oList.parentNode.offsetHeight - oList.offsetHeight){
+			ot = oList.parentNode.offsetHeight - oList.offsetHeight;
+		}
+		oList.style.top=ot+"px";
+		oScrollBtn.style.top=-ot/oList.offsetHeight*oScrollBar.offsetHeight+"px";
+
+		if (oEvent.preventDefault) {oEvent.preventDefault();  }else{oEvent.returnValue = false; }  // 在元素上滚动时阻止浏览器滚动
+            
+	}
+}
+
+</script>
+</head>
+<body>
+<div class="list_box">
+	<ol id="list" class="list">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+		<li>11</li>
+		<li>12</li>
+		<li>13</li>
+		<li>14</li>
+	</ol>
+</div>
+<script>listScroll("list","li");</script>
+
+
+<div class="list_box">
+	<ol id="list2" class="list">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+		<li>11</li>
+		<li>12</li>
+		<li>13</li>
+		<li>14</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+		<li>11</li>
+		<li>12</li>
+		<li>13</li>
+		<li>14</li>
+	</ol>
+</div>
+<script>listScroll("list2","li");</script>
+
+</body>
+</html>
