@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+*{margin:0;padding:0;}
+body{background:#f2f2f2;font:12px/1.5em Arial;color:#666;}
+.mtb10{margin-top:10px;margin-bottom:10px;}
+
+.wraper{width:800px;margin:10px auto;}
+
+/* 开关按钮 */
+.switch{display:inline-block;width:65px;height:20px;position:relative;font-size:0;border-radius:10px;box-shadow:inset 0 1px 1px 0 #999,0 1px 0 0 #fff;cursor:pointer;}
+.switch::before{content:"";height:1px;background:#cfcfcf;border:1px solid #a1a1a1;border-color:#a1a1a1 #bdbdbd #f3f3f3;width:46px;position:absolute;left:50%;top:50%;margin:-1px 0 0 -23px;}
+.off::after{content:"";width:12px;height:12px;position:absolute;left:50%;top:50%;margin:-6px 0 0 -29px;background:-webkit-linear-gradient(top,#f8f8f8,#e2e2e2);border-radius:6px;box-shadow:0px 1px 3px 1px #ccc;-webkit-transform:translate(46px 0);-webkit-transition:all 0.5s linear;}
+.on::after{content:"";width:12px;height:12px;position:absolute;left:50%;top:50%;margin:-6px 0 0 17px;background:-webkit-linear-gradient(top,#f8f8f8,#e2e2e2);border-radius:6px;box-shadow:0px 1px 3px 1px #ccc;-webkit-transform:translate(-46px 0);-webkit-transition:all 0.5s linear;}
+.switch .show_switch{position:absolute;left:70px;top:0;height:20px;line-height:20px;font-weight:bold;font-size:12px;}
+.switch.off .show_switch{color:red;}
+.switch.on .show_switch{color:green;}
+/* 开关按钮-end */
+
+/* 图片框 */
+.pic_box{border:1px solid #d9d9d9;width:48px;height:48px;padding:8px;position:relative;background:-webkit-linear-gradient(top,#f8f8f8,#f7f7f7);}
+.pic_box::before{content:"";position:absolute;left:50%;bottom:-3px;width:96%;height:1px;border:1px solid #d9d9d9;margin-left:-48%;}
+.pic_box::after{content:"";position:absolute;left:50%;bottom:-5px;width:92%;height:1px;border:1px solid #d9d9d9;margin-left:-46%;box-shadow:0 2px 3px 0 rgba(0,0,0,0.1);}
+/* 图片框 -end*/
+
+/* 搜索 */
+.search_bor{width:200px;height:20px;line-height:20px;padding:4px 10px 4px 30px;position:relative;overflow:hidden;border-radius:14px;box-shadow:inset 0 1px 1px 1px #d9d9d9,0 1px 0 0 #fff;}
+.search_bor::before{content:"";width:8px;height:8px;overflow:hidden;border:2px solid #ccc;position:absolute;left:10px;top:50%;margin-top:-6px;border-radius:6px;}
+.search_bor::after{content:"";width:6px;height:3px;background:#ccc;overflow:hidden;position:absolute;left:20px;top:50%;margin-top:4px;-webkit-transform:rotate(45deg);}
+.inset_txt{width:100%;height:20px;line-height:20px;border:0;background:transparent;outline:none;}
+/* 搜索-end */
+	</style>
+	<script>
+function getClassName(p,c,t){
+	var arr=[];
+	var oT=t || "*";
+	var regC=new RegExp(c+" ",i);
+	var aT=p.getElementsByTagName(oT);
+	for(var i=0;i<aT.length;i++){
+		if(regC.test(aT[i].className)){
+			arr.push(aT[i]);
+		}
+	}
+	return arr;
+}
+
+function fnSwitch(obj,c,c2){
+	obj.onclick=function(){
+		if(this.className==c){
+			this.className=c2;
+			this.getElementsByTagName("span")[0].innerHTML="on";
+		}else{
+			this.className=c;
+			this.getElementsByTagName("span")[0].innerHTML="off";
+		}
+	}
+}
+
+</script>
+</head>
+<body>
+<div class="wraper">
+	<div class="switch_bor mtb10">
+		<div><div class="switch off"><span class="show_switch">off</span></div></div>
+		<div class="mtb10"><div class="switch on"><span class="show_switch">on</span></div></div>
+	</div>
+	<script>
+	var aSwitch=getClassName(document,"switch","div");
+	for(var i=0;i<aSwitch.length;i++){
+		fnSwitch(aSwitch[i],"switch off","switch on");
+	}
+	</script>
+
+	<div class="pic_box"><a href="http://if2e.org/aysee" title="aysee"><img src="http://if2e.org/aysee/wp-content/themes/if2e/images/logo.jpg" alt="logo"></a></div>
+
+	<div class="mtb10 search_bor">
+		<form action=""><input type="text" class="inset_txt" placeholder="router"></form>
+	</div>
+</div>
+
+</body>
+</html>

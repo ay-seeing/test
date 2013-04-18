@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>播放器的一些效果</title>
+<style>
+*{margin:0;padding:0;}
+body{font:14px/2em 'Microsoft YaHei';color:rgba(255,255,255,0.8);background:-webkit-linear-gradient(right top,#278ec6,#b281d1);}
+a:link,a:visited{color:rgba(255,255,255,0.8);text-decoration:none;}
+a:hover,a:active{color:white;text-decoration:none;}
+ol,ul{list-style:none;}
+.wraper{width:500px;margin:10px auto;}
+</style>
+</head>
+<body>
+http://www.mnsfz.com/
+<div class="wraper">
+
+<!-- menu -->
+<style>
+.menu{height:50px;border:1px solid #080508;border-radius:5px;background:-webkit-linear-gradient(top,#53445a 0%,#433947 49%,#3c3140 50%,#2d2730 100%);}
+.menu ul{vertical-align:top;display:-webkit-box;}
+.menu li{position:relative;text-align:center;line-height:50px;border-left:1px solid #080508;box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.15);-webkit-box-flex:1;}
+.menu li::before,.menu li::after{content:"";position:absolute;top:0;width:1px;height:100%;background:-webkit-linear-gradient(top,rgba(255,255,255,0.15),transparent);}
+.menu li::before{left:0;}
+.menu li::after{right:0;}
+.menu li:first-child{border-left:none;}
+.menu li:first-child::before{visibility:hidden;}
+.menu li:last-child::after{visibility:hidden;;}
+.menu a{display:block;text-shadow:0 1px 0 #35273a;}
+.menu .count{position:absolute;right:10px;top:-8px;height:16px;line-height:16px;padding:0 4px;border-radius:2px;background:-webkit-linear-gradient(top,#53bdec,#2c82d9);box-shadow:0 1px 1px 0 rgba(0,0,0,0.3),inset 0 1px 0 0 rgba(255,255,255,0.3);text-shadow:0 1px 0 #2571d4;}
+.menu a:active{color:white;box-shadow:inset 0 0 50px 0 rgba(0,0,0,0.5);}
+</style>
+
+<div class="menu">
+	<ul>
+		<li><a href="#">First menu<span class="count">2</span></a></li>
+		<li><a href="#">Active menu</a></li>
+		<li><a href="#">Third menu</a></li>
+	</ul>
+</div>
+
+
+<!-- pre-next -->
+<style>
+.pre_next{width:40%;height:50px;border:1px solid #080508;border-radius:5px;margin:10px 0;background:-webkit-linear-gradient(top,#53445a 0%,#433947 49%,#3c3140 50%,#2d2730 100%);display:-webkit-box;}
+.pre_next li{position:relative;border-left:1px solid #080508;-webkit-box-flex:1;box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.2);}
+.pre_next li::before,.pre_next li::after{content:"";position:absolute;top:0;width:1px;height:100%;font-size:0;overflow:hidden;background:-webkit-linear-gradient(top,rgba(255,255,255,.15),transparent);}
+.pre_next li::before{left:0;}
+.pre_next li::after{right:0;}
+.pre_next li:first-child{border-left:none;}
+.pre_next li:first-child::before{visibility:hidden;}
+.pre_next li:last-child::after{visibility:hidden;}
+.pre_next li a{display:block;height:50px;position:relative;}
+.pre_next li a::before,.pre_next li a::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:4px;background:#d4d7d8;border-radius:2px 0 0 2px;box-shadow:0 1px 0 0 rgba(0,0,0,0.8);-webkit-transition:all 0.2s linear;}
+.pre_next li a::before{-webkit-transform:rotate(45deg);margin-top:-5px;}
+.pre_next li a::after{-webkit-transform:rotate(-45deg);margin-top:-0px;}
+.pre_next li a:hover::before,.pre_next li a:hover::after{background-color:white;}
+.pre_next li a:active{box-shadow:inset 0 0 30px 0 rgba(0,0,0,0.3);}
+</style>
+<ul class="pre_next">
+	<li class="pre"><a href="javascript:void(0)"></a></li>
+	<li class="next"><a href="javascript:void(0)"></a></li>
+</ul>
+
+
+<!-- audio -->
+<style>
+.audio_bar{height:50px;border:1px solid #080508;border-radius:5px;margin:10px 0;background:-webkit-linear-gradient(top,#53445a 0%,#433947 49%,#3c3140 50%,#2d2730 100%);box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.2);display:-webkit-box;}
+.audio_bar .tool_play,.audio_bar .tool_stop{width:10%;height:100%;border-right:1px solid #080508;position:relative;cursor:pointer;}
+.audio_bar .tool_play::before,.audio_bar .tool_stop::before{content:"";position:absolute;left:50%;top:50%;margin:-8px 0 0 -3px;}
+.audio_bar .tool_play::before{width:0;height:0;margin:-8px 0 0 -3px;border-width:8px 10px;border-style:solid;border-color:transparent transparent transparent rgba(255,255,255,0.7);}
+.audio_bar .tool_stop::before{width:4px;height:16px;margin:-8px 0 0 -5px;border-left:3px solid rgba(255,255,255,0.7);border-right:3px solid rgba(255,255,255,0.7);}
+.audio_bar .tool_play::after,.audio_bar .tool_stop::after{content:"";width:1px;height:100%;position:absolute;right:0;top:0;background:-webkit-linear-gradient(top,rgba(255,255,255,0.15),transparent);}
+.audio_bar .length{width:50%;padding:0 3%;height:50px;position:relative;border-right:1px solid #080508;-webkit-box-flex:1;}
+.audio_bar .length::before,.audio_bar .length::after{content:"";width:1px;height:100%;position:absolute;top:0;background:-webkit-linear-gradient(top,rgba(255,255,255,0.15),transparent)}
+.audio_bar .length::before{left:0;}
+.audio_bar .length::after{right:0;}
+.audio_bar .length_bar{height:8px;width:100%;position:relative;top:21px;background:rgba(0,0,0,0.2);border-radius:4px;box-shadow:inset 0 1px 1px 0 rgba(0,0,0,0.2),0 1px 0 0 rgba(255,255,255,0.1);cursor:pointer;}
+.audio_bar .length_buffer{height:100%;width:90%;background:rgba(0,0,0,0.2);border-radius:4px;}
+.audio_bar .length_complete{position:absolute;left:0;top:0;height:100%;width:60%;border-radius:4px;background:-webkit-linear-gradient(top,#54baeb,#2f87db);box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.2),0 1px 2px 0 rgba(0,0,0,0.4);}
+.audio_bar .length_complete .length_dot{position:absolute;right:-8px;top:50%;margin-top:-8px;width:16px;height:16px;border-radius:50%;background:-webkit-linear-gradient(top,#e4e6e7,#a7abae);box-shadow:0 1px 2px 0 rgba(0,0,0,0.5),inset 0 1px 0 0 rgba(255,255,255,.2);cursor:pointer;}
+.audio_bar .length_complete .length_dot::before{content:"";position:absolute;left:50%;top:50%;width:40%;height:40%;margin:-20% 0 0 -20%;border-radius:50%;background:-webkit-linear-gradient(top,#a7abae,#e4e6e7);box-shadow:inset 0 1px 1px 1px rgba(0,0,0,0.2);}
+
+.volume{width:15%;padding:0 3% 0 8%;height:50px;position:relative;}
+.volume::before{content:"";width:1px;height:100%;position:absolute;left:0;top:0;background:-webkit-linear-gradient(top,rgba(255,255,255,0.15),transparent)}
+.volume_icon{position:absolute;width:6px;height:8px;font-size:0;left:18px;top:50%;margin-top:-4px;background:#d6dae0;box-shadow:0 1px 0 0 rgba(0,0,0,0.5);}
+.volume_icon::before{content:"";position:absolute;width:0;height:0;font-size:0;overflow:hidden;left:50%;top:50%;margin:-8px 0 0 -10px;border:8px solid transparent;border-right-color:#d6dae0;}
+.volume_off{background:#1b171c;}
+.volume_off::before{border-right-color:#1b171c;}
+.volume_off::after{content:"";position:absolute;width:20px;height:1px;font-size:0;overflow:hidden;left:50%;top:50%;margin:-1px 0 0 -8px;background:rgba(0,0,0,.6);-webkit-transform:rotate(45deg);}
+</style>
+<div class="audio_bar">
+	<div class="tool_play"></div><!-- <div class="tool_stop"></div> -->
+	<div class="length">
+		<div class="length_bar">
+			<div class="length_buffer"></div>
+			<div class="length_complete"><div class="length_dot"></div></div>
+		</div>
+	</div>
+	<div class="volume">
+		<div class="volume_icon"></div><!-- <div class="volume_icon volume_off"></div> -->
+		<div class="length_bar">
+			<div class="length_complete"><div class="length_dot"></div></div>
+		</div>
+	</div>
+</div>
+
+
+<!-- 日历 -->
+<style>
+.calendar{width:265px;height:40px;margin:25px 0;border-bottom:1px solid rgba(0,0,0,0.7);background:-webkit-linear-gradient(top,#d2d1d4,#515558);display:-webkit-box;}
+.calendar--item{width:85px;height:85px;margin-left:3px;position:relative;top:-22px;border:1px solid #0b080b;border-radius:2px;background:-webkit-linear-gradient(top,#524d54 0%,#443f47 24%,#3d383f 25%,#2d2630 49%,#1e1a21 50%,#36313a 100%);box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.2);}
+.calendar .calendar--item:first-child{margin-left:0;}
+.calendar--item::before{content:"";position:absolute;left:1px;right:1px;bottom:-3px;height:1px;font-size:0;overflow:hidden;background:rgba(0,0,0,0.2);border:1px solid #0b080b;}
+.calendar--item::after{content:"";position:absolute;left:3px;right:3px;bottom:-5px;height:1px;font-size:0;overflow:hidden;background:rgba(0,0,0,0.2);border:1px solid #0b080b;}
+.calendar--item .txt{height:100%;text-align:center;font:50px/85px Arial;text-shadow:0 1px 2px rgba(0,0,0,.6);}
+.calendar--item .txt::before,.calendar--item .txt::after{content:"";position:absolute;top:50%;width:4px;height:6px;margin-top:-4px;border:1px solid #0b080b;overflow:hidden;background:-webkit-linear-gradient(top,#939698,#8b8f91);box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.2),inset 0 -1px 0 0 rgba(0,0,0,.2);}
+.calendar--item .txt::before{left:-1px;border-left:none;}
+.calendar--item .txt::after{right:-1px;border-right:none;}
+.calendar--item .line{position:absolute;left:4px;right:4px;top:50%;margin-top:-1px;height:0;font-size:0;border-top:1px solid #151515;border-bottom:1px solid #363337;box-shadow:0 1px 0 0 #2f2a31,0 -1px 0 0 #2f2a31;}
+</style>
+<div class="calendar">
+	<div class="calendar--item">
+		<div class="txt">12</div>
+		<div class="line"></div>
+	</div>
+	<div class="calendar--item">
+		<div class="txt">12</div>
+		<div class="line"></div>
+	</div>
+	<div class="calendar--item">
+		<div class="txt">12</div>
+		<div class="line"></div>
+	</div>
+</div>
+
+
+<div class="mtb10">
+	<input type="submit" value="提交" />
+</div>
+
+</div>
+</body>
+</html>
