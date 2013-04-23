@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>读书记登录</title>
-	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet/less" type="text/css" href="css/common.less" />
 	<style>
 .login_box{position:fixed;left:50%;top:50%;width:300px;padding:15px;background:#f0f0f0;border:1px solid #eee;border-radius:5px;box-shadow:1px 1px 3px #ccc;margin:-150px 0 0 -155px;}
 .login_box--h{font:18px/normal "Microsoft YaHei";color:black;margin-bottom:15px;}
@@ -11,7 +11,8 @@
 input:-webkit-autofill{background-color:black !important;color:#999 !important;box-shadow:none;}
 .login_box input:focus{color:#666;}
 </style>
-
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="https://raw.github.com/cloudhead/less.js/master/dist/less-1.3.3.min.js"></script>
 </head>
 <body>
 <?php 
