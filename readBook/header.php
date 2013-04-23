@@ -6,6 +6,7 @@
 	<link rel="stylesheet/less" type="text/css" href="css/common.less" />
 	<link rel="stylesheet" href="css/index.css" />
 	<link rel="stylesheet/less" type="text/css" href="css/page.less" />
+	<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 	<script src="https://raw.github.com/cloudhead/less.js/master/dist/less-1.3.3.min.js"></script>
 </head>
 <body>

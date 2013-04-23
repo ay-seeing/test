@@ -7,11 +7,10 @@
 	<style>
 .login_box{position:fixed;left:50%;top:50%;width:300px;padding:15px;background:#f0f0f0;border:1px solid #eee;border-radius:5px;box-shadow:1px 1px 3px #ccc;margin:-150px 0 0 -155px;}
 .login_box--h{font:18px/normal "Microsoft YaHei";color:black;margin-bottom:15px;}
-.login_box input{width:294px;height:30px;line-height:30px;padding: 0 2px;background:white;border:1px solid #999;color:#999;border-radius:2px;}
+.login_box input[name*="user"]{width:294px;height:30px;line-height:30px;padding: 0 2px;background:white;border:1px solid #999;color:#999;border-radius:2px;}
 input:-webkit-autofill{background-color:black !important;color:#999 !important;box-shadow:none;}
 .login_box input:focus{color:#666;}
 </style>
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 
 </head>
 <body>
@@ -63,7 +62,8 @@ oPs.onkeydown=function(ev){
 }
 
 </script>
-<!-- <script>
+<script>
+// 去除用户名密码黄色背景，但是无效
 // Stop chrome's autocomplete from making your input fields that nasty yellow. Yuck.
 if (navigator.userAgent.toLowerCase().indexOf("chrome") >= 0) {
 	$(window).load(function(){
@@ -80,7 +80,7 @@ if (navigator.userAgent.toLowerCase().indexOf("chrome") >= 0) {
 <p>http://www.benjaminmiles.com/2010/11/22/fixing-google-chromes-yellow-autocomplete-styles-with-jquery/</p>
 <p>https://code.google.com/p/chromium/issues/detail?id=46543#c22</p>
 <p>http://css-tricks.com/snippets/html/autocomplete-off/</p>
--->
+
 </body>
 </html>
 
