@@ -8,13 +8,21 @@ include("header.php");
 		<article class="article">
 			<header class="article--h"><h1 class="h1">读书笔记</h1><a href="#" class="more">更多</a></header>
 			<ol class="notes">
-				<li><div href="#" class="name">士大夫士大夫撒分割</div><div><a href="#">查看</a><a href="#" class="ml10">编辑</a></div></li>
-				<li><div href="#" class="name">士大夫士大夫撒分割</div><div><a href="#">查看</a><a href="#" class="ml10">编辑</a></div></li>
-				<li><div href="#" class="name">士大夫士大夫撒分割</div><div><a href="#">查看</a><a href="#" class="ml10">编辑</a></div></li>
-				<li><div href="#" class="name">士大夫士大夫撒分割</div><div><a href="#">查看</a><a href="#" class="ml10">编辑</a></div></li>
-				<li><div href="#" class="name">士大夫士大夫撒分割</div><div><a href="#">查看</a><a href="#" class="ml10">编辑</a></div></li>
-				<li><div href="#" class="name">士大夫士大夫撒分割</div><div><a href="#">查看</a><a href="#" class="ml10">编辑</a></div></li>
-				<li><div href="#" class="name">士大夫士大夫撒分割</div><div><a href="#">查看</a><a href="#" class="ml10">编辑</a></div></li>
+				<?php 
+				$snote="select * from `readbook`.`bookinfo` order by `id` desc limit 0,5";
+				$query=mysql_query($snote,$conn);
+				if(count(mysql_fetch_array($query))==0){
+					while($arr=mysql_fetch_array($query)){
+					?>
+					<li><div href="#" class="name"><?php echo $arr["title"] ?></div><div><a href="view.php?sid="<?php echo $arr["title"] ?>>查看</a><a href="edit.php?sid="<?php echo $arr["title"] ?> class="ml10">编辑</a></div></li>
+					<?php
+					}
+				}else{
+				?>
+					<li>暂无笔记。。。</li>
+				<?php
+				}
+				 ?>
 			</ol>
 		</article>
 	</aside>

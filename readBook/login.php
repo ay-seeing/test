@@ -57,7 +57,7 @@ oBtn.onclick=function(){
 }
 oPs.onkeydown=function(ev){
 	var oEvent=ev || event;
-	if(oEvent.keyCode==13 && oEvent.ctrlKey){
+	if(oEvent.keyCode==13){
 		oForm.submit();
 	};
 }

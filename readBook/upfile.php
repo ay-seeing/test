@@ -7,7 +7,8 @@ include("header.php");
 		<div class="upfiles--h">上传文件</div>
 		<div class="upfiles--m">
 			<form action=<?php echo basename(__FILE__); ?> method="get" name="upfiles">
-				<div><input type="file"></div>
+				<div><input type="file" id="bookUp"></div>
+				<div class="mb10"><img src="" alt="" id="previewImage"></div>
 				<div class="mt10"><select name="bookType" class="book_type"><option value="0">选择种类</option><option value="jsj">计算机</option></select><span class="red ml5">*</span></div>
 				<p class="red" id="typeTip">请选择类型</p>
 				<div class="mt10"><input type="text" name="bookTitle" class="bookT" maxsize="5" placeholder="书名"><span class="red ml5">*</span></div>
@@ -53,6 +54,30 @@ tUpBtn.onclick=function(){
 	}
 	alert("判断完成");
 }
+
+var oBookUp=document.getElementById("bookUp");
+var oPreviewImage=document.getElementById("previewImage");
+oBookUp.onchange = function(evt) {
+    // 如果浏览器不支持FileReader，则不处理
+    if (!window.FileReader) return;
+    var files = evt.target.files;
+    for (var i = 0, f; f = files[i]; i++) {
+        if (!f.type.match('image.*')) {
+            continue;
+        }
+
+        var reader = new FileReader();
+        reader.onload = (function(theFile) {
+            return function(e) {
+                // img 元素
+                oPreviewImage.src = e.target.result;
+            };
+        })(f);
+
+        reader.readAsDataURL(f);
+    }
+}
+
 </script>
 
 
