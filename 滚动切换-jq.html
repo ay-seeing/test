@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚动切换</title>
+	<style>
+*{margin:0;padding:0;}
+body{font:12px/2em "Microsoft HaHei";color:#666;}
+.box{width:300px;height:250px;border:2px solid #ccc;margin:10px auto;}
+.items{width:300px;height:220px;position:relative;overflow:hidden;}
+.items ul{position:absolute;}
+.items li{width:300px;height:220px;float:left;background:#f0f0f0;}
+.nums{margin-top:5px;text-align:center;}
+.nums span{padding:0 6px;border:1px solid #ccc;margin:0 2px;cursor:pointer;}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script>
+$(document).ready(function(){
+	var $items=$("#items");
+	var $ul=$(".action");
+	var $li=$ul.children("li");
+	var $nums=$("#nums");
+	var $span=$nums.children("span");
+	var $n=0;
+	var $itemst=null;  // 设置
+	// 每个单元的宽度(w+p+b+m)
+	var $itemw=$li.outerWidth(true);
+
+	//设置列表ul的宽度
+	$ul.css("width",$li.length*$itemw);
+
+	// 添加移上去事件
+	$span.mouseover(function(){
+		//alert($(this).index());  or   slert($span.index(this));
+		$n=$(this).index();
+		$scrollTab($n);
+		if($itemst){
+			clearInterval($itemst);
+		}
+	});
+
+	function $scrollTab(n){
+		$ul.stop().animate({left:-$itemw*n});
+	}
+
+	//自动切换
+	function $autofn(){
+		$itemst=setInterval(function(){
+			$n++;
+			if($n==$span.length){
+				$n=0;
+			}
+			$scrollTab($n);
+		},1000*2);
+	}
+	$autofn();
+
+	// 移上去停止自动切换
+	$items.parent().mouseover(function(){
+		if($itemst){
+			clearInterval($itemst);
+		}
+	});
+	// 移出去开启自动切换
+	$items.parent().mouseout($autofn);
+});
+	</script>
+</head>
+<body>
+	<div class="box">
+		<div class="items" id="items">
+			<ul class="action">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+		</div>
+		<div class="nums" id="nums">
+			<span>1</span>
+			<span>2</span>
+			<span>3</span>
+			<span>4</span>
+			<span>5</span>
+		</div>
+	</div>
+</body>
+</html>
